@@ -1,0 +1,13 @@
+{
+	"forwardPorts": [
+		5501,
+		8000
+	],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ritwickdey.LiveServer"
+			]
+		}
+	}
+}
