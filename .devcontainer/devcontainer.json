@@ -1,6 +1,7 @@
 {
 	"forwardPorts": [
 		5501,
+		3000,
 		8000
 	],
 	"customizations": {
