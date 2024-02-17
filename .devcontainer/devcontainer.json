@@ -13,3 +13,5 @@
 		}
 	}
 }
+
+"postStartCommand": "cd express-URL_Investigator/; nodemon start"
