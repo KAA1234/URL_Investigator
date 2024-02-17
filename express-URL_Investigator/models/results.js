@@ -5,7 +5,19 @@ const resultSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    threatScore: {
+    threatScoreHarmless: {
+        type: String,
+        required: true
+    },
+    threatScoreMalicious: {
+        type: String,
+        required: true
+    },
+    threatScoreSuspicious: {
+        type: String,
+        required: true
+    },
+    threatScoreUndetected: {
         type: String,
         required: true
     },

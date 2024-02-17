@@ -5,5 +5,15 @@ block content
                 // Your content here
                 h1 Results
                     p URL: #{result.url}
-                    p VirusTotal: #{result.virusTotal}
-                    p Threat Score: #{result.threatScore}
+                    p Virus Total Threat Score: 
+                    table
+                        tr
+                            th Harmless
+                            th Malicious
+                            th Suspicious
+                            th Undetected
+                        tr
+                            td #{result.threatScoreHarmless}
+                            td #{result.threatScoreMalicious}
+                            td #{result.threatScoreSuspicious}
+                            td #{result.threatScoreUndetected}
