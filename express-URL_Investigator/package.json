@@ -15,9 +15,12 @@
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
+    "@google-cloud/aiplatform": "^3.13.0",
+    "@google-cloud/vertexai": "^0.4.0",
     "api": "^6.1.1",
     "dotenv": "^16.4.4",
     "express-async-handler": "^1.2.0",
-    "express-validator": "^7.0.1"
+    "express-validator": "^7.0.1",
+    "nodemon": "^3.0.3"
   }
 }

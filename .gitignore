@@ -1,2 +1,3 @@
 # .gitignore file
 express-URL_Investigator/.env
+express-URL_Investigator/vertexAIServiceAccountKey.json

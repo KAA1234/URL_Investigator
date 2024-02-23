@@ -1,9 +1,11 @@
 
+
 const Results = require("../models/results");
 const asyncHandler = require("express-async-handler");
 const fetch = require('node-fetch');
 require('dotenv').config();
 
+const { streamGenerateContent } = require('../test_VertexAI_API_Call.js');
 
 
 exports.url_create_post = [
@@ -12,7 +14,10 @@ exports.url_create_post = [
 
     if (searchResult) {
       const result = await Results.findOne({ url: req.body.search }).exec();
-      res.render('results', { result });
+      let aiOutput = await streamGenerateContent(req.body.search);
+      console.log(aiOutput);
+      res.render('results', { result , aiAssessment: aiOutput['text'] });
+
     } else {
       const options = {
         method: 'GET',
@@ -40,7 +45,9 @@ exports.url_create_post = [
 
 
       await newResult.save();
-      res.render('results', { result: newResult });
+      let aiOutput = await streamGenerateContent(req.body.search);
+      console.log(aiOutput);
+      res.render('results', { result: newResult, aiAssessment: aiOutput['text'] });
     }
   })
 ];

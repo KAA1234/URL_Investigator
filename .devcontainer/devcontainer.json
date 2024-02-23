@@ -3,7 +3,7 @@
 		5501,
 		3000,
 		3001,
-		8000,
+		8000
 	],
 	"customizations": {
 		"vscode": {
@@ -11,7 +11,7 @@
 				"ritwickdey.LiveServer"
 			]
 		}
-	}
+	},
+	"postStartCommand": ["cd express-URL_Investigator/", "nodemon start"]
 }
 
-"postStartCommand": "cd express-URL_Investigator/; nodemon start"
