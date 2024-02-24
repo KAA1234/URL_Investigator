@@ -13,8 +13,15 @@ router.get('/', function(req, res, next) {
   res.render('URL_homepage', { title: 'Express' });
 });
 
-// POST request for creating Book.
+router.post("/submit-comment", search_controller.add_comment, search_controller.url_create_post);
+
+//function(req, res, next) {
+//  res.send("Comment " + req.body.comment + " submitted for url " + req.body.url);
+//});
+
+// investigate a url
 router.post("/", search_controller.url_create_post);
+
 
 
 

@@ -1,13 +1,14 @@
 extends layout
 
 block content
-        .content
-                // Your content here
-                h1 Results
-                    p URL: #{result.url} 
-                    p GenAI Assesment: 
+        div.content
+                div.results    
+                    h1 Results for #{result.url} 
+                div.GenAI 
+                    h1 GenAI Assesment: 
                     p #{aiAssessment}
-                    p Virus Total Threat Score:
+                div.vtotal
+                    h1 Virus Total Threat Score: #{result.virusTotalThreatScore}
                     table
                         tr
                             th Harmless
@@ -19,3 +20,19 @@ block content
                             td #{result.threatScoreMalicious}
                             td #{result.threatScoreSuspicious}
                             td #{result.threatScoreUndetected}
+                div.comments 
+                    h1 Historical Comments: 
+                    if result.comments.length > 0
+                        div.histComments                       
+                            for comment in result.comments
+                                p #{comment}
+
+
+                    form.commentForm(action="/submit-comment" method="POST")
+                        textarea.commentInputField(name="comment" rows="4" cols="100")
+                        input(type='hidden', name='search', value=result.url )
+                        button.commentButton(type="submit" rows='4' cols='20')
+                            | Add
+                            br
+                            | Comment
+

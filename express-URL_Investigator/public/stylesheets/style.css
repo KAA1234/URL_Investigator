@@ -10,7 +10,7 @@
   grid-column:  2/5;
   grid-row: 1/1;
   border-style: solid;
-  border-color: lightblue;
+  border-color: blue;
   display:flex;
   align-items: center;
   justify-content: center;
@@ -18,19 +18,43 @@
 }
 
 .search {
-  grid-column:  3/4;
-  grid-row: 3/4;
+  grid-column:  2/5;
+  grid-row: 2/3;
   display:flex;
   align-items: center;
+  justify-content: center;
+  border-color: blue; // Add this line to set the background color to blue
+  
+}
+
+.searchField{
+  box-sizing: border-box;
+  min-width: 400px;
+  min-height: 50px;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+  border-color: blue;
+  font-size: 1.5rem;
+  text-align: center;
   justify-content: center;
 }
 
+.btn.btn-primary{
+  min-width: 100px;
+  min-height: 50px;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  border-color: blue
+}
+
+
 .content {
-  grid-column:  3/4;
-  grid-row: 4/5;
-  display:flex;
+  grid-column:  2/5;
+  grid-row: 3/6;
+  display:block;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 table {
@@ -42,7 +66,84 @@ table th {
   background-color: lightblue;
 }
 
+table td {
+  background-color: white;
+}
+
 table td, table th {
   border: 1px solid black;
   padding: 10px;
+}
+
+.vtotal, .GenAI, .comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 15px auto;
+  border: 3px solid lightblue;
+  border-radius: 2rem;
+}
+
+.GenAI p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.GenAI:hover, .vtotal:hover, .comments:hover {
+  border: 3px solid blue;
+  padding: 10px;
+}
+
+.results {
+  margin-bottom: 50px;
+}
+
+.commentForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.commentInputField {
+  border-color: lightblue;
+  border-radius: 2rem;
+  font-size: 1rem;
+  text-align: left;
+  border: 3px solid lightblue;
+  width: 70%;
+  padding: 10px;
+}
+
+.commentButton {
+  border-color: lightblue;
+  border-radius: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border: 3px solid lightblue;
+  padding: 10px;
+  margin: 10px;
+  min-height: 100px;
+}
+
+.commentForm:hover .commentButton, .commentForm:hover .commentInputField {
+  border-color: blue;
+}
+
+input:focus, .commentInputField:focus{
+  border-color:blue;
+  outline: none;
+}
+
+.histComments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 15px auto;
+  border: 3px solid black;
+  border-radius: 2rem;
+  min-width: 77%;
+
 }

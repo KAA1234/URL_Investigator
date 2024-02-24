@@ -7,9 +7,9 @@ html
   body(class='grid-container')
     h1(class='title') URL Investigator 
 
-  form(class='search' method='POST')
+  form(class='search' action="/" method='POST')
     div.search
-      input(type='text', placeholder='google.com' name='search')
+      input.searchField(type='text', placeholder='google.com' name='search')
     button.btn.btn-primary(type='submit') Investigate
   
   block content

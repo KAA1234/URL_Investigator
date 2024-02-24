@@ -7,6 +7,26 @@ require('dotenv').config();
 
 const { streamGenerateContent } = require('../test_VertexAI_API_Call.js');
 
+exports.add_comment = [
+  asyncHandler(async (req, res, next) => {
+    const filter = { url: req.body.search }; // find doc for searched url
+    const currentDate = new Date().toLocaleDateString('en-US', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric'
+    });
+    const update = { $push: { comments: currentDate + ": " + req.body.comment } }; // append comment to comments array
+
+    // `doc` is the document _before_ `update` was applied
+    let doc = await Results.updateOne(filter, update).exec();
+
+    // render page with updated comment
+    const result = await Results.findOne({ url: req.body.search }).exec();
+    
+    res.render('results', { result, aiAssessment: 'TODO add AI assessment to doc' });
+  })
+];
+
 
 exports.url_create_post = [
   asyncHandler(async (req, res, next) => {
