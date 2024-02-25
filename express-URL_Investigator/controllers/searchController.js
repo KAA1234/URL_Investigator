@@ -22,8 +22,8 @@ exports.add_comment = [
 
     // render page with updated comment
     const result = await Results.findOne({ url: req.body.search }).exec();
-    
-    res.render('results', { result, aiAssessment: 'TODO add AI assessment to doc' });
+
+    res.render('results', { result: result });
   })
 ];
 
@@ -34,9 +34,8 @@ exports.url_create_post = [
 
     if (searchResult) {
       const result = await Results.findOne({ url: req.body.search }).exec();
-      let aiOutput = await streamGenerateContent(req.body.search);
-      console.log(aiOutput);
-      res.render('results', { result , aiAssessment: aiOutput['text'] });
+      res.render('results', { result: result });
+   
 
     } else {
       const options = {
@@ -54,20 +53,27 @@ exports.url_create_post = [
       const threatScoreSuspiciousInstance = JSON.stringify(data['data']['attributes']['last_analysis_stats']['suspicious']);
       const threatScoreUndetectedInstance = JSON.stringify(data['data']['attributes']['last_analysis_stats']['undetected']);
 
+      const aiOutput = await streamGenerateContent(req.body.search);
+
+      
+
 
       const newResult = new Results({
         url: req.body.search,
         threatScoreHarmless: threatScoreHarmlessInstance,
         threatScoreMalicious: threatScoreMaliciousInstance,
         threatScoreSuspicious: threatScoreSuspiciousInstance,
-        threatScoreUndetected: threatScoreUndetectedInstance
+        threatScoreUndetected: threatScoreUndetectedInstance,
+        genAI: aiOutput
       });
 
 
       await newResult.save();
-      let aiOutput = await streamGenerateContent(req.body.search);
-      console.log(aiOutput);
-      res.render('results', { result: newResult, aiAssessment: aiOutput['text'] });
+
+      const result = await Results.findOne({ url: req.body.search }).exec();
+    
+      res.render('results', { result: result });
     }
+    
   })
 ];

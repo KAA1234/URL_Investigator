@@ -6,20 +6,21 @@ block content
                     h1 Results for #{result.url} 
                 div.GenAI 
                     h1 GenAI Assesment: 
-                    p #{aiAssessment}
-                div.vtotal
-                    h1 Virus Total Threat Score: #{result.virusTotalThreatScore}
-                    table
-                        tr
-                            th Harmless
-                            th Malicious
-                            th Suspicious
-                            th Undetected
-                        tr
-                            td #{result.threatScoreHarmless}
-                            td #{result.threatScoreMalicious}
-                            td #{result.threatScoreSuspicious}
-                            td #{result.threatScoreUndetected}
+                    p #{result.genAI}
+                a(href=`https://www.virustotal.com/gui/home/url`, style="text-decoration: none", target="_blank")
+                    div.vtotal
+                        h1 Virus Total Threat Score: #{result.virusTotalThreatScore}
+                        table
+                            tr
+                                th Harmless
+                                th Malicious
+                                th Suspicious
+                                th Undetected
+                            tr
+                                td #{result.threatScoreHarmless}
+                                td #{result.threatScoreMalicious}
+                                td #{result.threatScoreSuspicious}
+                                td #{result.threatScoreUndetected}
                 div.comments 
                     h1 Historical Comments: 
                     if result.comments.length > 0

@@ -24,6 +24,10 @@ const resultSchema = new mongoose.Schema({
     comments: {
         type: [String],
         required: false
+    }, 
+    genAI: {
+        type: String,
+        required: false
     }
 });
 

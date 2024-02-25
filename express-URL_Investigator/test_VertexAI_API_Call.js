@@ -25,22 +25,25 @@ const generativeModel = vertex_ai.preview.getGenerativeModel(generativeModelOpti
 // The streamGenerateContent function does not need to be an async declaration since it returns a Promise implicitly.
 function streamGenerateContent(domain) {
   const request = {
-    contents: [{ role: 'user', parts: [{ text: 'is the domain '+ domain + ' malicous? Please explain in 200 charactors' }] }],
+    contents: [{ role: 'user', parts: [{ text: 'is the domain ' + domain + ' malicous? Please explain in 500 charactors or less. Please use cybersecurity sources to formulate your response' }] }],
   };
-  
+
   // Using implicit return for the async arrow function.
   return (async () => {
     try {
       const streamingResp = await generativeModel.generateContentStream(request);
+      let streamChunk = '';
       for await (const item of streamingResp.stream) {
-        console.log('stream chunk: ', item.candidates[0].content.parts[0]);
-        return ('stream chunk: ', item.candidates[0].content.parts[0]);
+        if (item && item.candidates && item.candidates[0] && item.candidates[0].content && item.candidates[0].content.parts && item.candidates[0].content.parts[0]) {
+          streamChunk += item.candidates[0].content.parts[0]['text'];
+          console.log(item.candidates[0].content.parts[0]['text']);
+        }
       }
-    } catch (error) {
-      console.error('An error occurred during content generation:', error);
+      return streamChunk; // return the streamChunk variable
+    } catch (err) {
+      console.error('An error occurred during content generation:', err);
     }
   })();
 }
 // Invoking the function to start the content generation process.
 module.exports = { streamGenerateContent };
-
