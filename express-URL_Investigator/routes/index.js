@@ -19,7 +19,7 @@ router.post("/submit-comment", search_controller.add_comment, search_controller.
 //  res.send("Comment " + req.body.comment + " submitted for url " + req.body.url);
 //});
 
-// investigate a url
+// investigate a url.
 router.post("/", search_controller.url_create_post);
 
 
