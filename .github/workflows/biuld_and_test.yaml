@@ -9,7 +9,10 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v1
+      - uses: actions/setup-apt@v3
+        with:
+          packages: rsync
+
 
       - name: Deploy to my lightsail instance
         uses: easingthemes/ssh-deploy@v2.1.5
