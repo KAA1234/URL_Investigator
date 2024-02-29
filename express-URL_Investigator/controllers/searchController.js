@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const { streamGenerateContent } = require('../test_VertexAI_API_Call.js');
 
-s
+
 exports.add_comment = [
   asyncHandler(async (req, res, next) => {
     const filter = { url: req.body.search }; // find doc for searched url
