@@ -21,5 +21,4 @@ jobs:
           SOURCE: "./"
           REMOTE_HOST: 3.136.201.30
           REMOTE_USER: "bitnami"
-          TARGET: "/home/bitnami/SampleExpressApp"
-          
+          TARGET: "/home/bitnami/url_investigator"
