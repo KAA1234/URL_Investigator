@@ -5,7 +5,7 @@ block content
                 div.results    
                     h1 Results for #{result.url} 
                 div.GenAI 
-                    h1 GenAI Assesment: 
+                    h1 GenAI Assesment (testing github actions)
                     p #{result.genAI}
                 a(href=`https://www.virustotal.com/gui/home/url`, style="text-decoration: none", target="_blank")
                     div.vtotal
@@ -22,7 +22,7 @@ block content
                                 td #{result.threatScoreSuspicious}
                                 td #{result.threatScoreUndetected}
                 div.comments 
-                    h1 Historical Comments: 
+                    h1 Historical Comments 
                     if result.comments.length > 0
                         div.histComments                       
                             for comment in result.comments
