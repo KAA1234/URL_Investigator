@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - name: Checkout the code
-        uses: actions/setup-apt@v3
-        with:
-          packages: rsync
+        uses: actions/checkout@v2
 
+      - name: Install rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
 
       - name: Deploy to my lightsail instance
         uses: easingthemes/ssh-deploy@v2.1.5
@@ -22,4 +22,3 @@ jobs:
           REMOTE_HOST: 3.136.201.30
           REMOTE_USER: "bitnami"
           TARGET: "/home/bitnami/SampleExpressApp"
-
