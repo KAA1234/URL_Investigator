@@ -8,7 +8,7 @@ var logger = require('morgan');
 
 const search_controller = require("../controllers/searchController");
 
-/* GET home page. */
+/* GET home page! */
 router.get('/', function(req, res, next) {
   res.render('URL_homepage', { title: 'Express' });
 });
