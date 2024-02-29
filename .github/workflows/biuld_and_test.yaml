@@ -1,34 +1,22 @@
-name: CI
+name: Push-to-Lightsail
 
-on:
-  push:
-    branches: [ KAA1234-patch-2 ]
-  pull_request:
-    branches: [ KAA1234-patch-2 ]
-
-  workflow_dispatch:
+on: push
 
 jobs:
-  build:
-
+  deploy:
+    name: Push to lightsail
     runs-on: ubuntu-latest
 
-    if: github.ref != 'refs/heads/master'
-
-    strategy:
-      matrix:
-        node-version: [14.x]
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout the code
+        uses: actions/checkout@v1
 
+      - name: Deploy to my lightsail instance
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SOURCE: "./"
+          REMOTE_HOST: "arn:aws:lightsail:us-east-2:334414210782:Instance/ba06262a-cc71-4cd6-b906-ea84a729ab8e"
+          REMOTE_USER: "bitnami"
+          TARGET: "/home/bitnami/SampleExpressApp"
 
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@5.1
-        with:
-          switches: -avzr --delete
-          path: ./*
-          remote_path: /var/www/my-app/
-          remote_host: <host>.compute.amazonaws.com
-          remote_user: ubuntu
-          remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
