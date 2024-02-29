@@ -16,7 +16,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SOURCE: "./"
-          REMOTE_HOST: "arn:aws:lightsail:us-east-2:334414210782:Instance/ba06262a-cc71-4cd6-b906-ea84a729ab8e"
+          REMOTE_HOST: 3.136.201.30
           REMOTE_USER: "bitnami"
           TARGET: "/home/bitnami/SampleExpressApp"
 
