@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Checkout the code
-      - uses: actions/setup-apt@v3
+        uses: actions/setup-apt@v3
         with:
           packages: rsync
 
