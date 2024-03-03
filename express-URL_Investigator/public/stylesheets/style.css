@@ -4,6 +4,7 @@
   grid-template-rows: repeat(6, 1fr);
   width: 100vw;
   height: 100vh;
+  background-color: aquamarine;
 }
 
 .title {
